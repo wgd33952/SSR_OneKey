@@ -1,0 +1,129 @@
+#!/bin/bash
+# chkconfig: 2345 90 10
+# description: start or stop the ShadowsocksR server
+#
+### BEGIN INIT INFO
+# Provides: ShadowsocksR
+# Required-Start: $network $syslog
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Description: Start or stop the ShadowsocksR server
+### END INIT INFO
+
+name=ShadowsocksR
+BIN=#ssrdir#
+conf=/etc/shadowsocks.json
+
+start(){
+    bash ${BIN}logrun.sh
+    RETVAL=$?
+    if [ "$RETVAL" = "0" ]; then
+        echo "$name start success"
+    else
+        echo "$name start failed"
+    fi
+}
+
+stop(){
+	bash ${BIN}stop.sh
+}
+
+status(){
+	bash ${BIN}tail.sh
+}
+
+adduser(){
+	bash ${BIN}ssr.sh adduser
+}
+
+deluser(){
+	bash ${BIN}ssr.sh deluser
+}
+
+update(){
+	bash ${BIN}ssr.sh update
+}
+
+bbr(){
+	bash ${BIN}ssr.sh bbr
+}
+
+serverspeeder(){
+	bash ${BIN}ssr.sh serverspeeder
+}
+
+userverspeeder(){
+	bash ${BIN}ssr.sh userverspeeder
+}
+
+kernel(){
+	bash ${BIN}ssr.sh kernel
+}
+
+uninstall(){
+	bash ${BIN}ssr.sh uninstall
+}
+
+case "$1" in
+'start')
+    start
+    ;;
+'stop')
+    stop
+    ;;
+'status')
+    status
+    ;;
+'adduser')
+    adduser
+    ;;
+'deluser')
+    deluser
+    ;;
+'update')
+    update
+    ;;	
+'bbr')
+    bbr
+    ;;	
+'serverspeeder')
+    serverspeeder
+    ;;	
+'userverspeeder')
+    userverspeeder
+    ;;	
+'kernel')
+    kernel
+    ;;
+'uninstall')
+    uninstall
+    ;;
+'restart')
+    stop
+    start
+    RETVAL=$?
+    ;;
+*)
+    echo "---------------------------"
+    echo "SSR一键包 命令"
+    echo "启动              =ssr start"
+	echo "停止              =ssr stop"
+	echo "状态              =ssr status"
+	echo "添加用户          =ssr adduser"
+	echo "删除用户          =ssr deluser"
+	echo "更新服务端        =ssr update"
+	echo "安装BBR           =ssr bbr"
+	echo "安装锐速          =ssr serverspeeder"
+	echo "卸载锐速          =ssr userverspeeder"
+	echo "安装支持锐速的内核=ssr kernel"
+	echo "卸载SSR           =ssr uninstall"
+	echo "---------------------------"
+	echo "说明：安装BBR会把系统升级到最新内核，如果有特定内核版本需求请慎用。"
+	echo "      锐速破解版使用的是91yun提供的包，如果内核不兼容请手动更换。"
+	echo "---------------------------"
+    RETVAL=1
+    ;;
+esac
+exit $RETVAL
+
