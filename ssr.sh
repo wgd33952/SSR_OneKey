@@ -172,8 +172,8 @@ function adduser(){
 	echo "auth_chain_c"
 	echo "auth_chain_d"
 	echo "如果使用None算法的话协议请选择auth_chain系列"
-    read -p "(Default: auth_sha1_v4_compatible):" protocol
-    [ -z "$protocol" ] && protocol="auth_sha1_v4_compatible"
+    read -p "(Default: auth_chain_a):" protocol
+    [ -z "$protocol" ] && protocol="auth_chain_a"
     echo
     echo "---------------------------"
     echo "Protocol = $protocol"
@@ -187,8 +187,8 @@ function adduser(){
 	echo "http_simple"
 	echo "http_post"
 	echo "tls1.2_ticket_auth_compatible"
-    read -p "(Default: tls1.2_ticket_auth_compatible):" obfs
-    [ -z "$obfs" ] && obfs="tls1.2_ticket_auth_compatible"
+    read -p "(Default: tls1.2_ticket_auth):" obfs
+    [ -z "$obfs" ] && obfs="tls1.2_ticket_auth"
     echo
     echo "---------------------------"
     echo "obfs = $obfs"
