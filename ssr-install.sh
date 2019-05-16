@@ -84,7 +84,7 @@ rm -rf libsodium-1.0.13.tar.gz
 rm -rf libsodium-1.0.13
 
 #git克隆ssr
-git clone https://github.com/shadowsocksrr/shadowsocksr.git ${ssrdir}
+git clone -b akkariiin/master https://github.com/shadowsocksrr/shadowsocksr.git ${ssrdir}
 cd ${ssrdir}
 bash setup_cymysql.sh
 bash initcfg.sh
