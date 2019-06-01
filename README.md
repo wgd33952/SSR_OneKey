@@ -4,6 +4,7 @@
 `wget -N --no-check-certificate https://raw.githubusercontent.com/kot4ri/SSR_OneKey/master/ssr-install.sh && bash ssr-install.sh`
 
 # SSR一键包 命令
+```
 启动              =ssr start
 停止              =ssr stop
 状态              =ssr status
@@ -15,7 +16,7 @@
 卸载锐速          =ssr userverspeeder
 安装支持锐速的内核=ssr kernel
 卸载SSR           =ssr uninstall
-
+```
 
 # 安装libsodium
 如果要使用 salsa20 或 chacha20 或 chacha20-ietf 算法，请安装 libsodium :
